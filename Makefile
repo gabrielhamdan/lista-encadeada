@@ -1,5 +1,5 @@
 all:
-	cc -o lista *.c
+	cc *.c -o lista
 
 run:
 	./lista

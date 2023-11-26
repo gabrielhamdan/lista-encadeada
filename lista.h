@@ -1,10 +1,7 @@
 #ifndef _LISTA_H
 #define _LISTA_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
+#include "util.h"
 
 #define T_SOBRENOME 100
 #define T_NOME 50
@@ -20,7 +17,7 @@ enum Opcoes {
     SAIR
 };
 
-typedef struct {
+typedef struct s_contato {
     char sobrenome[T_SOBRENOME];
     char nome[T_NOME];
     char email[T_EMAIL];
@@ -28,16 +25,17 @@ typedef struct {
     char telefone[T_TELEFONE];
 } Contato;
 
-typedef struct Node {
-    Contato contato;
-    struct Node *anterior;
-    struct Node *proximo;
+typedef struct s_node {
+    Contato *contato;
+    struct s_node *anterior;
+    struct s_node *proximo;
 } Node;
 
-void inicializa_lista(Node *);
-void insere_item(Node *);
-void remove_item(Node *);
+void exibe_menu(Node **);
+void insere_item(Node **);
+Contato* cria_novo_contato();
+void remove_item(Node **);
 void consulta_item(int);
-void lista_itens(Node *);
+void lista_itens(Node **);
 
 #endif
