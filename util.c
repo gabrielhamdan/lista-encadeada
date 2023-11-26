@@ -25,6 +25,32 @@ void digita_dado(char *descricao, char *campo, int t_campo) {
     fgets(campo, t_campo, stdin);
 }
 
-bool mallocou(Node *node) {
-    return node == NULL;
+bool mallocou(void *ponteiro) {
+    return ponteiro != NULL;
+}
+
+void alerta_erro(char *err) {
+    printf("%s\n", err);
+}
+
+void aguarda_input(char *msg) {
+    printf("%s", msg);
+    char c;
+    while((c = getchar()) != '\n');
+}
+
+char * strcxalta(const char *str) {
+    static char nstr[T_SOBRENOME];
+
+    for(int i = 0; i < strlen(str); i++)
+        if(str[i] == '\n') {
+            nstr[i] = 0;
+            break;
+        } else nstr[i] = toupper(str[i]);
+
+    return nstr;
+}
+
+void free_nodes(Node **node) {
+    
 }

@@ -6,6 +6,8 @@ int main(int argc, char **argv) {
 
     exibe_menu(&lista_contatos);
 
+    free_nodes(&lista_contatos);
+
     return 0;
 }
 
@@ -18,9 +20,9 @@ void exibe_menu(Node **lista_contatos) {
 
         int opcao;
         scanf("%d", &opcao);
-        getchar();
+        getchar(); // Consome \n do buffer do teclado.
 
-        switch (opcao)
+        switch (opcao) // Seleciona enum
         {
             case INSERIR_ITEM:
                 insere_item(lista_contatos);
