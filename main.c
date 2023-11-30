@@ -8,7 +8,7 @@ int main(int argc, char **argv) {
 
     free_nodes(&lista_contatos);
 
-    return 0;
+    exit(EXIT_SUCCESS);
 }
 
 void exibe_menu(Node **lista_contatos) {
@@ -31,13 +31,14 @@ void exibe_menu(Node **lista_contatos) {
                 aguarda_input(remove_item(lista_contatos));
                 break;
             case CONSULTAR_ITEM:
-                consulta_item(0);
+                consulta_item(lista_contatos);
                 break;
             case LISTAR_ITENS:
                 aguarda_input(lista_itens(lista_contatos));
                 break;
             case SAIR:
-                exit(EXIT_SUCCESS);
+                encerra_execucao = true;
+                break;
             default: eh_opcao_invalida = true; break;
         }
     }

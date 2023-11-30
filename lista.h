@@ -35,7 +35,8 @@ void exibe_menu(Node **);
 void insere_item(Node **);
 Contato * cria_novo_contato();
 char * remove_item(Node **);
-void consulta_item(int);
+void consulta_item(Node **);
 char * lista_itens(Node **);
+bool eh_lista_vazia(Node **);
 
 #endif

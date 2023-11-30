@@ -51,8 +51,11 @@ Contato * cria_novo_contato() {
 }
 
 char * remove_item(Node **lista_contatos) {
-    if(lista_itens(lista_contatos) == ALT_LISTA_VAZIA) // Lista itens ou informa que a lista está vazia.
+    system("clear");
+
+    if(eh_lista_vazia(lista_contatos)) // Lista itens ou informa que a lista está vazia.
         return ALT_LISTA_VAZIA;
+    else lista_itens(lista_contatos);
 
     Node *node_atual = *lista_contatos;
     Node *node_anterior = NULL;
@@ -89,14 +92,50 @@ char * remove_item(Node **lista_contatos) {
     return "Contato removido com sucesso.";
 }
 
-void consulta_item(int i_item) {
-    // Lista dados do contato.
+void consulta_item(Node **lista_contatos) {
+    system("clear");
+
+    if(eh_lista_vazia(lista_contatos)) {// Lista itens ou informa que a lista está vazia.
+        aguarda_input(ALT_LISTA_VAZIA);
+        return;
+    }
+    else lista_itens(lista_contatos);
+
+    Node *node_atual = *lista_contatos;
+
+    int index;
+    printf("Digite a posição do item que deseja consultar: ");
+    scanf("%d", &index);
+    getchar(); // Consome \n do buffer do teclado.
+    system("clear");
+
+    if(index <= 0) {// Valida índice >= 1.
+        aguarda_input(ALT_INDEX_INVALIDO);
+        return;
+    }
+
+    int i = 1;
+    while(i < index && node_atual != NULL) { // Itera a lista até o índice do item selecionado ou até o fim da lista (subótimo).
+        node_atual = node_atual->proximo;
+        i++;
+    }
+
+    if (node_atual == NULL) {// Node null indica que extrapolou a quantidade de itens.
+        aguarda_input(ALT_INDEX_INVALIDO);
+        return;
+    }
+
+    printf("%s, %s", strcxalta(node_atual->contato->sobrenome), node_atual->contato->nome);
+    printf("CPF: %s", node_atual->contato->cpf);
+    printf("E-mail: %s", node_atual->contato->email);
+    printf("Tel.: %s\n", node_atual->contato->telefone);
+    aguarda_input(ALT_AGUARDA_INPUT);
 }
 
 char * lista_itens(Node **lista_contatos) {
     system("clear");
 
-    if(*lista_contatos == NULL) // Se a lista estiver vazia, informa o usuário e retorna ao menu quando ENTER for pressionado.
+    if(eh_lista_vazia(lista_contatos)) // Se a lista estiver vazia, informa o usuário e retorna ao menu quando ENTER for pressionado.
         return ALT_LISTA_VAZIA;
 
     Node *node_atual = *lista_contatos;
@@ -110,4 +149,8 @@ char * lista_itens(Node **lista_contatos) {
     }
 
     return ALT_AGUARDA_INPUT;
+}
+
+bool eh_lista_vazia(Node ** lista_contatos) {
+    return *lista_contatos == NULL;
 }

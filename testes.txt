@@ -1,0 +1,8 @@
+1. Inserir contatos Cláudio Boff e Gabriel Hamdan;
+2. Listar contatos;
+3. Inserir contato Fábio Okuyama;
+4. Listar contatos;
+5. Remover contato Cláudio Boff;
+6. Consultar contato Gabriel Hamdan;
+7. Consultar contato na posição 3;
+8. Encerrar programa, liberando nodes da restantes;

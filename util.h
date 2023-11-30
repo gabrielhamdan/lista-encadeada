@@ -11,7 +11,7 @@
 #define ERR_MALLOC "Não foi possível alocar memória."
 
 #define ALT_LISTA_VAZIA "Lista vazia."
-#define ALT_AGUARDA_INPUT "Tecle ENTER para voltar ao menu."
+#define ALT_AGUARDA_INPUT "\nTecle ENTER para voltar ao menu."
 #define ALT_INDEX_INVALIDO "A posição informada não existe na lista."
 
 void exibe_menu(Node **);

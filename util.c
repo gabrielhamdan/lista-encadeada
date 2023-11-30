@@ -52,5 +52,17 @@ char * strcxalta(const char *str) {
 }
 
 void free_nodes(Node **node) {
-    // Libera contato e node de cada item da lista.
+    while(true) {
+        Node *node_atual = *node; // Recebe o primeiro item da fila.
+
+        if(node_atual != NULL) // Se for NULL, sai do laço: todos os itens foram liberados.
+            *node = (*node)->proximo; // Se não, node passa a ser o seu sucessor.
+        else break;
+        
+        free(node_atual->contato); // Free no node atual, i. e., no mesmo ponteiro que apontava para o node que passou a ser seu sucessor acima.
+        free(node_atual);
+    }
+
+    system("clear");
+    printf("Nodes liberados com sucesso.\n");
 }
