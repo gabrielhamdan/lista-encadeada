@@ -10,6 +10,8 @@
 
 #define ERR_MALLOC "Não foi possível alocar memória."
 
+#define ALT_LISTA_VAZIA "Lista vazia."
+#define ALT_AGUARDA_INPUT "Tecle ENTER para voltar ao menu."
 
 void exibe_menu(Node **);
 void digita_dado(char *, char *, int);

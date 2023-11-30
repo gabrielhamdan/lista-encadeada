@@ -34,7 +34,7 @@ void exibe_menu(Node **lista_contatos) {
                 consulta_item(0);
                 break;
             case LISTAR_ITENS:
-                lista_itens(lista_contatos);
+                aguarda_input(lista_itens(lista_contatos));
                 break;
             case SAIR:
                 exit(EXIT_SUCCESS);

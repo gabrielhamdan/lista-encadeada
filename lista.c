@@ -18,6 +18,7 @@ void insere_item(Node **lista_contatos) {
 
     if(!mallocou(novo_node)) { // Se não mallocou, alerta o erro e sai da função.
         alerta_erro(ERR_MALLOC);
+        free(novo_contato);
         return;
     }
 
@@ -50,20 +51,25 @@ Contato * cria_novo_contato() {
 }
 
 void remove_item(Node **lista_contatos) {
+    lista_itens(lista_contatos);
 
+    int index;
+    printf("Digite o item que deseja remover da lista: ");
+    scanf("%d", &index);
+    getchar();
+
+    // logica remover
 }
 
 void consulta_item(int i_item) {
 
 }
 
-void lista_itens(Node **lista_contatos) {
+char * lista_itens(Node **lista_contatos) {
     system("clear");
 
-    if(*lista_contatos == NULL) { // Se a lista estiver vazia, informa o usuário e retorna ao menu quando ENTER for pressionado.
-        aguarda_input("Lista vazia.");
-        return;
-    }
+    if(*lista_contatos == NULL) // Se a lista estiver vazia, informa o usuário e retorna ao menu quando ENTER for pressionado.
+        return ALT_LISTA_VAZIA;
 
     Node *node_atual = *lista_contatos;
 
@@ -75,5 +81,5 @@ void lista_itens(Node **lista_contatos) {
         i++;
     }
 
-    aguarda_input("Tecle ENTER para voltar ao menu.");
+    return ALT_AGUARDA_INPUT;
 }

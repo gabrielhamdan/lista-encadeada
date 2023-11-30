@@ -36,6 +36,6 @@ void insere_item(Node **);
 Contato * cria_novo_contato();
 void remove_item(Node **);
 void consulta_item(int);
-void lista_itens(Node **);
+char * lista_itens(Node **);
 
 #endif
