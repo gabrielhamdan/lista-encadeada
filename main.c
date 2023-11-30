@@ -28,7 +28,7 @@ void exibe_menu(Node **lista_contatos) {
                 insere_item(lista_contatos);
                 break;
             case REMOVER_ITEM:
-                remove_item(lista_contatos);
+                aguarda_input(remove_item(lista_contatos));
                 break;
             case CONSULTAR_ITEM:
                 consulta_item(0);

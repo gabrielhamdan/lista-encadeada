@@ -34,7 +34,7 @@ typedef struct s_node {
 void exibe_menu(Node **);
 void insere_item(Node **);
 Contato * cria_novo_contato();
-void remove_item(Node **);
+char * remove_item(Node **);
 void consulta_item(int);
 char * lista_itens(Node **);
 

@@ -50,19 +50,47 @@ Contato * cria_novo_contato() {
     return novo_contato;
 }
 
-void remove_item(Node **lista_contatos) {
-    lista_itens(lista_contatos);
+char * remove_item(Node **lista_contatos) {
+    if(lista_itens(lista_contatos) == ALT_LISTA_VAZIA) // Lista itens ou informa que a lista está vazia.
+        return ALT_LISTA_VAZIA;
+
+    Node *node_atual = *lista_contatos;
+    Node *node_anterior = NULL;
+    Node *node_proximo = NULL;
 
     int index;
-    printf("Digite o item que deseja remover da lista: ");
+    printf("Digite a posição do item que deseja remover da lista: ");
     scanf("%d", &index);
-    getchar();
+    getchar(); // Consome \n do buffer do teclado.
+    system("clear");
 
-    // logica remover
+    if(index <= 0) // Valida índice >= 1.
+        return ALT_INDEX_INVALIDO;
+
+    int i = 1;
+    while(i < index && node_atual != NULL) { // Itera a lista até o índice do item selecionado ou até o fim da lista (subótimo).
+        node_anterior = node_atual;
+        node_atual = node_atual->proximo;
+        i++;
+    }
+
+    if (node_atual == NULL) // Node null indica que extrapolou a quantidade de itens.
+        return ALT_INDEX_INVALIDO;
+    
+    if (node_anterior != NULL) // Se não é o primeiro item da lista, une próximo do anterior ao próximo do atual.
+        node_anterior->proximo = node_atual->proximo;
+    else
+        *lista_contatos = node_atual->proximo; // Se for o primeiro item, o próximo será o primeiro (caso seja NULL, a lista estará, portanto, vazia).
+
+    // Desaloca memória do contato e do node.
+    free(node_atual->contato);
+    free(node_atual);
+
+    return "Contato removido com sucesso.";
 }
 
 void consulta_item(int i_item) {
-
+    // Lista dados do contato.
 }
 
 char * lista_itens(Node **lista_contatos) {

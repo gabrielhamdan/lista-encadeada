@@ -52,5 +52,5 @@ char * strcxalta(const char *str) {
 }
 
 void free_nodes(Node **node) {
-    
+    // Libera contato e node de cada item da lista.
 }
