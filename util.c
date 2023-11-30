@@ -5,10 +5,10 @@ void exibe_opcoes(bool *eh_opcao_invalida) {
     system("clear");
 
     printf("##### LISTA ENCADEADA #####\n");
-    printf("1 - Inserir item na lista\n");
-    printf("2 - Remover item da lista\n");
-    printf("3 - Consultar item da lista\n");
-    printf("4 - Listar todos os itens\n");
+    printf("1 - Inserir contato na lista\n");
+    printf("2 - Remover contato da lista\n");
+    printf("3 - Consultar contato da lista\n");
+    printf("4 - Listar todos os contatos\n");
     printf("5 - Sair\n");
 
     if(*eh_opcao_invalida) {

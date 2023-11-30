@@ -62,7 +62,7 @@ char * remove_item(Node **lista_contatos) {
     Node *node_proximo = NULL;
 
     int index;
-    printf("Digite a posição do item que deseja remover da lista: ");
+    printf("\nDigite a posição do item que deseja remover da lista: ");
     scanf("%d", &index);
     getchar(); // Consome \n do buffer do teclado.
     system("clear");
@@ -104,7 +104,7 @@ void consulta_item(Node **lista_contatos) {
     Node *node_atual = *lista_contatos;
 
     int index;
-    printf("Digite a posição do item que deseja consultar: ");
+    printf("\nDigite a posição do item que deseja consultar: ");
     scanf("%d", &index);
     getchar(); // Consome \n do buffer do teclado.
     system("clear");
@@ -147,6 +147,8 @@ char * lista_itens(Node **lista_contatos) {
         node_atual = node_atual->proximo;
         i++;
     }
+
+    printf("\n");
 
     return ALT_AGUARDA_INPUT;
 }
