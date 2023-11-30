@@ -11,7 +11,7 @@
 
 enum Opcoes {
     INSERIR_ITEM = 1,
-    REMOVER_ITEM,
+    REMOVER_ITEM =2,
     CONSULTAR_ITEM,
     LISTAR_ITENS,
     SAIR

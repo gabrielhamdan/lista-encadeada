@@ -15,6 +15,9 @@ void insere_item(Node **lista_contatos) {
     }
 
     Node *novo_node = malloc(sizeof(Node)); // Malloca o novo_node.
+    novo_node->anterior = NULL;
+    novo_node->contato = NULL;
+    novo_node->proximo = NULL;
 
     if(!mallocou(novo_node)) { // Se não mallocou, alerta o erro e sai da função.
         alerta_erro(ERR_MALLOC);
@@ -49,9 +52,77 @@ Contato * cria_novo_contato() {
     return novo_contato;
 }
 
+//void remove_item(Node **lista_contatos) {
+//
+//    int indice;
+//    int i=1;
+//
+//    Node *node_atual = *lista_contatos;
+//    Node *node_anterior = NULL;
+//    Node *node_proximo = NULL;
+//
+//    printf("Indice a ser removido:\n");
+//    scanf("%d", &indice);
+//
+//
+//    
+//    while(node_atual != NULL && indice != i) {
+//
+//        if(i>indice){
+//            printf("Índice maior que lista.\n");
+//            break;
+//        }
+//        
+//        node_anterior = node_atual->anterior;
+//        node_atual = node_atual->proximo;
+//        node_proximo = node_atual->proximo;
+//        i++;
+//    }
+//        node_anterior->proximo = node_atual->proximo;
+//        node_proximo->anterior = node_atual->anterior;
+//
+//        free(node_atual->contato);
+//        free(node_atual);
+//}
 void remove_item(Node **lista_contatos) {
+    int indice;
+    int i = 1;
 
+    Node *node_atual = *lista_contatos;
+    Node *node_anterior = NULL;
+    Node *node_proximo = NULL;
+
+    printf("Indice a ser removido:\n");
+    scanf("%d", &indice);
+
+    while (i < indice || node_atual == NULL) {
+        node_anterior = node_atual;
+        node_atual = node_atual->proximo;
+        i++;
+    }
+
+    if (node_atual == NULL) {
+        printf("Índice maior que o tamanho da lista.\n");
+        return;
+    }
+
+    if (node_anterior == NULL) {
+        *lista_contatos = node_atual->proximo;
+    } else {
+        node_anterior->proximo = node_atual->proximo;
+    }
+
+    if (node_atual->proximo != NULL) {
+        node_proximo = node_atual->proximo;
+        node_proximo->anterior = node_anterior;
+    }
+
+    free(node_atual->contato);
+    free(node_atual);
+
+    printf("Contato removido com sucesso.\n");
 }
+
 
 void consulta_item(int i_item) {
 
